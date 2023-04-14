@@ -9,7 +9,7 @@ let button;
 
 
 function setButtons() {
-  border = 50
+  border = 100
 
   const buttons = [];
   for (let i = 0; i < 8; i++) {
@@ -44,7 +44,7 @@ function isOverlap(button1, button2) {
   
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(400, 900);
   pixelDensity(5.0);
   background(4, 47, 16);
   //  socket = socket.io.connect('http://localhost:3000');

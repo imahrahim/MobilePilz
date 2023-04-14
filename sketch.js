@@ -44,7 +44,7 @@ function isOverlap(button1, button2) {
   
 
 function setup() {
-  createCanvas(375, 812);
+  createCanvas(windowWidth, windowHeight);
   pixelDensity(5.0);
   background(4, 47, 16);
   //  socket = socket.io.connect('http://localhost:3000');

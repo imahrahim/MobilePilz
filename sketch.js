@@ -9,20 +9,19 @@ let button;
 
 
 function setButtons() {
-  border = 100
-
   const buttons = [];
-  for (let i = 0; i < 8; i++) {
-  button
+  const buttonNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  for (let i = 0; i < buttonNumbers.length; i++) {
+    let button;
     do {
       x = random(border, 375-border);
       y = random(border, 812-border);
-      button = createButton(i + 1);
+      button = createButton(buttonNumbers[i]);
       button.position(x, y);
     } while (buttons.some((b) => isOverlap(button, b)));
-    button.id("b" + (i + 1));
+    button.id("b" + buttonNumbers[i]);
     button.mousePressed(() => {
-      n = i + 1;
+      n = buttonNumbers[i];
       socket.emit("message", n);
       console.log(n);
     });

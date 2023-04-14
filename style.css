@@ -1,0 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+button {
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 20px,20px;
+  color: rgb(255, 255, 255);
+  background: #1ba799;
+}
+
+
+canvas {
+  display: block;
+}

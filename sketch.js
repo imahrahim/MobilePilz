@@ -2,22 +2,42 @@ var socket;
 let buttons = [];
 
 function setButtons() {
-  let border = 100;
+  let borderY = 100;
+  let borderX = 30;
   let buttonSize = 50;
   let maxAttempts = 50;
+ let colors = [
+    "#F3E6FF", // Button 1
+    "#C2EFFF", // Button 2
+    "#C7FFE6", // Button 3
+    "#FFFCE6", // Button 4
+    "#FFDBBF", // Button 5
+    "#FFBFBF", // Button 6
+    "#E6BFFF", // Button 7
+    "#BFD9FF"  // Button 8
+  ]
+  
+  
+  
+  
+  
 
   for (let i = 1; i <= 8; i++) {
     let button = createButton(i.toString());
     let overlaps = true;
     let attempts = 0;
+    
     while (overlaps && attempts < maxAttempts) {
-      button.position(random(border, width - border - buttonSize), random(border, height - border - buttonSize));
+      let x = random(borderX, width - borderX - buttonSize);
+      let y = random(borderY, height - borderY - buttonSize)
+      button.position(x, y);
       overlaps = buttons.some((otherButton) => isOverlap(button, otherButton));
       attempts++;
     }
     if (attempts >= maxAttempts) {
       console.warn("Could not find a non-overlapping position for button " + i);
     }
+    button.style('background-color', colors[i-1]);
     button.mousePressed(() => {
       n = i;
       socket.emit('message', n);
@@ -43,7 +63,7 @@ function isOverlap(button1, button2) {
 function setup() {
   createCanvas(375, 812);
   pixelDensity(5.0);
-  background(4, 47, 16);
+ 
 
   socket = io.connect('https://dda-miflck.herokuapp.com/');
   socket.on('message', (data) => {

@@ -7,6 +7,7 @@ function setButtons() {
   let buttonSize = 50;
   let maxAttempts = 50;
  let colors = [
+  "#ff0000", //Button 0
     "#F3E6FF", // Button 1
     "#C2EFFF", // Button 2
     "#C7FFE6", // Button 3
@@ -17,13 +18,10 @@ function setButtons() {
     "#BFD9FF"  // Button 8
   ]
   
-  
-  
-  
-  
 
-  for (let i = 1; i <= 8; i++) {
-    let button = createButton(i.toString());
+  for (let i = 0; i <= 8; i++) {
+    let button = createButton(i === 0 ? "X" : i.toString());
+
     let overlaps = true;
     let attempts = 0;
     
@@ -37,7 +35,7 @@ function setButtons() {
     if (attempts >= maxAttempts) {
       console.warn("Could not find a non-overlapping position for button " + i);
     }
-    button.style('background-color', colors[i-1]);
+    button.style('background-color', colors[i]);
     button.mousePressed(() => {
       n = i;
       socket.emit('message', n);
